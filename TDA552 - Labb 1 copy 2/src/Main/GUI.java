@@ -1,6 +1,9 @@
 package Main;
 
-import Model.CarModel.TalkingCar;
+import Model.Car;
+import Model.TalkingCar;
+import Model.Volvo240;
+import Model.Saab95;
 
 import java.awt.*;
 

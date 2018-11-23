@@ -1,73 +1,79 @@
 package Test;
 
-import Model.*;
+import Model.Car;
+import Model.CarModel.Saab95;
+import Model.CarModel.Volvo240;
+import Model.CargoBed;
 import Model.Point;
+import Model.TransportModel.CarFerry;
+import Model.TransportModel.SemiTruck;
+import Model.Vehicle;
 import org.junit.jupiter.api.Test;
 
 import java.awt.*;
 import java.util.ArrayList;
 
-import static java.lang.StrictMath.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class CarTest {
 
     Car car = new Volvo240(4, 100, Color.BLACK);
+    Car car2 = new Saab95(4, 100, Color.RED);
 
 
     /*
     @Test
     void getNrDoors() {
-        assertEquals(car.getNrDoors(), 4);
+        assertEquals(vehicle.getNrDoors(), 4);
     }
 
     @Test
     void getEnginePower() {
-        assertEquals(car.getEnginePower(), 100);
+        assertEquals(vehicle.getEnginePower(), 100);
     }
 
     @Test
     void getCurrentSpeed() {
-            assertEquals(car.getCurrentSpeed(), 0);
+            assertEquals(vehicle.getCurrentSpeed(), 0);
     }
 
     @Test
     void getColor() {
-        assertEquals(car.getColor(), Color.BLACK);
+        assertEquals(vehicle.getColor(), Color.BLACK);
     }
 
     @Test
     void setColor() {
-        car.setColor(Color.RED);
-        assertEquals(car.getColor(), Color.RED);
+        vehicle.setColor(Color.RED);
+        assertEquals(vehicle.getColor(), Color.RED);
     }
 
     @Test
     void getTurnRate(){
-        assertEquals(car.getTurnRate(), PI/3);
+        assertEquals(vehicle.getTurnRate(), PI/3);
     }
 
     @Test
     void setTurnRate() {
-        car.setTurnRate(5.4);
-        assertEquals(car.getTurnRate(), 5.4);
+        vehicle.setTurnRate(5.4);
+        assertEquals(vehicle.getTurnRate(), 5.4);
     }
 
     @Test
     void startEngine() {
-        car.startEngine();
-        assertEquals(car.getCurrentSpeed(), 0.1);
+        vehicle.startEngine();
+        assertEquals(vehicle.getCurrentSpeed(), 0.1);
     }
 
     @Test
     void stopEngine() {
-        car.stopEngine();
-        assertEquals(car.getCurrentSpeed(), 0);
+        vehicle.stopEngine();
+        assertEquals(vehicle.getCurrentSpeed(), 0);
     }
 
     @Test
     void speedFactor() {
-        assertEquals(car.speedFactor(), 1.25);
+        assertEquals(vehicle.speedFactor(), 1.25);
     }
 
 
@@ -75,68 +81,68 @@ class CarTest {
     void checkArgument() {
 
         try{
-            car.gas(2);
+            vehicle.gas(2);
         } catch(RuntimeException e){
-            System.out.println(e.getMessage().equals(Car.INVALID_ARG));
+            System.out.println(e.getMessage().equals(Vehicle.INVALID_ARG));
         }
 
 
         try{
-            car.brake(4);
+            vehicle.brake(4);
         } catch(RuntimeException e){
-            System.out.println(e.getMessage().equals(Car.INVALID_ARG));
+            System.out.println(e.getMessage().equals(Vehicle.INVALID_ARG));
         }
     }
 
 
     @Test
     void gas(){
-        car.gas(0.5);
-        assertEquals(1.25*0.5, car.getCurrentSpeed());
+        vehicle.gas(0.5);
+        assertEquals(1.25*0.5, vehicle.getCurrentSpeed());
 
     }
 
     @Test
     void brake() {
-        car.gas(1);
-        car.brake(0.5);
-        assertEquals(1.25*0.5, car.getCurrentSpeed());
+        vehicle.gas(1);
+        vehicle.brake(0.5);
+        assertEquals(1.25*0.5, vehicle.getCurrentSpeed());
 
     }
 
     @Test
     void move() {
-        car.gas(1);
+        vehicle.gas(1);
 
-        car.move();
-        assertEquals(100+0*1.25 ,car.getPosition().getX() );
-        assertEquals(100+(-1)*1.25 ,car.getPosition().getY() );
+        vehicle.move();
+        assertEquals(100+0*1.25 ,vehicle.getPosition().getX() );
+        assertEquals(100+(-1)*1.25 ,vehicle.getPosition().getY() );
 
 
     }
 
     @Test
     void turnLeft() {
-        car.turnLeft();
-        assertEquals(car.getDirection().getX(), 0*cos(PI/3)-(-1)*sin(PI/3));
-        assertEquals(car.getDirection().getY(), 0*sin(PI/3)+(-1)*cos(PI/3));
+        vehicle.turnLeft();
+        assertEquals(vehicle.getDirection().getX(), 0*cos(PI/3)-(-1)*sin(PI/3));
+        assertEquals(vehicle.getDirection().getY(), 0*sin(PI/3)+(-1)*cos(PI/3));
     }
 
     @Test
     void turnRight() {
-        car.turnRight();
-        assertEquals(car.getDirection().getX(), 0*cos((5*PI)/3)-(-1)*sin((5*PI)/3));
-        assertEquals(car.getDirection().getY(), 0*sin((5*PI)/3)+(-1)*cos((5*PI)/3));
+        vehicle.turnRight();
+        assertEquals(vehicle.getDirection().getX(), 0*cos((5*PI)/3)-(-1)*sin((5*PI)/3));
+        assertEquals(vehicle.getDirection().getY(), 0*sin((5*PI)/3)+(-1)*cos((5*PI)/3));
     }
 
     @Test
     void checkDirection(){
-        Car c = new Saab95(4, 100, Color.BLUE, new Point(10,10), new Point(1,1));
+        Vehicle c = new Saab95(4, 100, Color.BLUE, new Point(10,10), new Point(1,1));
 
         //assertEquals(c.getDirection().getX(), sqrt(2)/2);
         //assertEquals(c.getDirection().getY(), sqrt(2)/2);
 
-        Car c2 = new Saab95(4, 100, Color.BLUE, new Point(10,10), new Point(0,2));
+        Vehicle c2 = new Saab95(4, 100, Color.BLUE, new Point(10,10), new Point(0,2));
 
         assertEquals(c2.getDirection().getX(), 0);
         assertEquals(c2.getDirection().getY(), 1);
@@ -144,7 +150,7 @@ class CarTest {
 
     @Test
     void Constructor(){
-        Car c = new Saab95(4, 100, Color.BLUE);
+        Vehicle c = new Saab95(4, 100, Color.BLUE);
 
     }*/
 
@@ -152,21 +158,16 @@ class CarTest {
 
 
     //Labb 2
-    Model.Point p = new Point(100,100);
-    SemiTruck semitruck = new SemiTruck(2, 100, Color.BLUE, p, p, new CargoBed(new ArrayList<>()));
-    String msg = "Is loaded car correct after it's set to loadable?"; //TODO ändra msg
-    String msg2 = "expected: true, actual: ";
-    Scania scania = new Scania(2, 100, Color.BLUE, p, p, new ArrayList<>());
+    Point p = new Point(1,1);
+    SemiTruck semitruck = new SemiTruck(2, 100, Color.BLUE, p, p);
 
-    @Test
-    void move2(){
-        scania.setBedAngle(3);
-        scania.move();
-    }
+    String msg = "Is car loaded after set to loadable? ";
+    String msg2 = "expected: true, actual: ";
+    String msg3 = "Is vehicle loadable? expected: false, actual: ";
 
     @Test
     void isLoadable(){
-        System.out.println("Is car loadable? expected: false, actual: " + semitruck.isLoadable(car));
+        System.out.println(msg3 + semitruck.isLoadable(car));
     }
 
 
@@ -175,16 +176,16 @@ class CarTest {
         //Allow for loading
         semitruck.extendRamp();
 
-        //Make car loadable
+        //Make vehicle loadable
         car.setPosition(semitruck.getPosition());
 
-        //Load car
+        //Load vehicle
         semitruck.loadCar(car);
 
         //Check if all conditions are met
-        System.out.println(msg +" "+ semitruck.getTrailer().get(0).toString().equals(car.toString()));
+        System.out.println(msg +" "+ semitruck.getCargoSpace().get(0).equals(car));
 
-        assertEquals(semitruck.getTrailer().get(0).toString(),car.toString());
+        assertEquals(semitruck.getCargoSpace().get(0), car);
 
 
     }
@@ -195,51 +196,80 @@ class CarTest {
         //Allow for unloading
         semitruck.extendRamp();
 
-        //Make car loadable
+        //Make vehicles loadable
         car.setPosition(semitruck.getPosition());
+        car2.setPosition(semitruck.getPosition());
 
 
-        //Load extra object to confirm that all is correct
-        semitruck.getTrailer().addCargo(1);
 
-        //Load car
+        //Load extra object to confirm that correct car is unloaded
+        semitruck.loadCar(car2);
+
+        //Load vehicle
         semitruck.loadCar(car);
 
-        //Unload car which was just loaded, leaving a "1" in the cargo
+        //Unload vehicle which was just loaded
         semitruck.unloadCar();
 
         //Check results
-        if(semitruck.getTrailer().get(0).equals(1)){
+
+        if(semitruck.getCargoSpace().get(0).equals(car2)){
             System.out.println("Unload is working as expected");
         }else{
-            System.out.println("Object " + semitruck.getTrailer().get(0) + " should have been removed but wasn't");
+            System.out.println("Object " + semitruck.getCargoSpace().get(0) + " should have been removed but wasn't");
         }
-
-
-        assertEquals(semitruck.getTrailer().get(0),1);
+        assertEquals(semitruck.getCargoSpace().get(0),car2);
     }
 
-
-    //TODO add an additional car to trailer to actually check if ALL cars move
     @Test
     void move(){
         //Allow for loading
         semitruck.extendRamp();
 
-        //Make car loadable
+        //Make vehicle loadable
         car.setPosition(semitruck.getPosition());
+        car2.setPosition(semitruck.getPosition());
 
-        //Load car
+        //Load vehicle
         semitruck.loadCar(car);
+        semitruck.loadCar(car2);
 
         //Perform action
         semitruck.move();
 
-        //Check that car has also moved
+        //Check that vehicle has also moved
         System.out.println("move: " + msg2 + semitruck.getPosition().toString().equals(car.getPosition().toString()));
 
-        assertEquals(semitruck.getPosition().toString(),car.getPosition().toString());
-
+        assertEquals(semitruck.getPosition().toString(), car.getPosition().toString());
+        assertEquals(semitruck.getPosition().toString(), car2.getPosition().toString());
     }
+
+    //CarFerry
+    CarFerry ferry = new CarFerry(100, Color.BLUE, p, p);
+
+    @Test
+    void unloadCargoFerry(){
+        //Allow for unloading
+        ferry.extendRamp();
+
+        //Make vehicles loadable
+        car.setPosition(ferry.getPosition());
+        car2.setPosition(ferry.getPosition());
+
+
+
+        //Load extra object to confirm that all is correct
+        ferry.loadCar(car2);
+
+        //Load vehicle
+        ferry.loadCar(car);
+
+        //Unload vehicle which was just loaded
+        ferry.unloadCar();
+
+        assertEquals(ferry.getCargoSpace().get(0), car);
+    }
+
+
 
 }

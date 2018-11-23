@@ -1,34 +1,52 @@
 package Model;
 
-import java.util.ArrayDeque;
 import java.util.ArrayList;
-import java.util.Deque;
-import java.util.List;
+
 
 public class CargoBed {
-    private ArrayList<Object> bed;
+    private ArrayList<Object> cargoList;
 
-
-    public CargoBed(ArrayList<Object> bed) {
-        this.bed = bed;
+    /**
+     * Constructor
+     */
+    public CargoBed() {
+        cargoList = new ArrayList<>();
     }
 
+    /**
+     * Adds cargo to cargoList
+     * @param o
+     */
     public void addCargo(Object o){
-        bed.add(0, o);
+        cargoList.add(o);
     }
 
-    public Object unloadCargo(){
-        Object tmp = bed.get(0);
-        bed.remove(0);
+    /**
+     * Removes cargo from cargoList
+     * @return cargo at index given in argument
+     */
+    public Object unloadCargo(int i){
+        Object tmp = cargoList.get(i);
+        cargoList.remove(i);
         return tmp;
     }
 
+
+    /**
+     *
+     * @return size
+     */
     public int size(){
-        return bed.size();
+        return cargoList.size();
     }
 
+    /**
+     *
+     * @param i
+     * @return read object at index given in argument in cargoList
+     */
     public Object get(int i){
-        return bed.get(i);
+        return cargoList.get(i);
     }
 
 

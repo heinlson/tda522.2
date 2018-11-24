@@ -197,7 +197,7 @@ class CarTest {
         semitruck.extendRamp();
 
         //Make vehicles loadable
-        car.setPosition(semitruck.getPosition());
+        // car.setPosition(semitruck.getPosition());
         car2.setPosition(semitruck.getPosition());
 
 

@@ -259,10 +259,16 @@ public abstract class Vehicle implements Movable {
      */
     @Override
     public void move() {
-        double nextX = position.getX() + direction.getX() *currentSpeed;
-        double nextY = position.getY() + direction.getY() *currentSpeed;
+        double nextX = position.getX() + direction.getX() * currentSpeed;
+        double nextY = position.getY() + direction.getY() * currentSpeed;
 
         position.setPoints(nextX, nextY);
+
+        if(position.getY() > 800-300 || position.getY() < 0){
+            invertDirection();
+        }
+
+
     }
 
     /**
@@ -307,6 +313,10 @@ public abstract class Vehicle implements Movable {
 
             direction.setPoints(unitVector);
         }
+    }
+
+    private void invertDirection(){
+        direction.setPoints(-direction.getX(),-direction.getY());
     }
 
 

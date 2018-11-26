@@ -17,6 +17,7 @@ import static java.lang.StrictMath.*;
  */
 public class Volvo240 extends Car {
     private final static double trimFactor = 1.25; //used in determining degree of acceleration/retardation
+    private static final int size = 3;
 
     /**
      * Default constructor initializing all instance variables except trimFactor, which is already initialized.
@@ -33,9 +34,14 @@ public class Volvo240 extends Car {
      * @param direction
      */
     public Volvo240(int nrDoors, double enginePower, Color color, Model.Point position, Model.Point direction) {
-        super(nrDoors, enginePower, color, position, direction, 3);
+        super(nrDoors, enginePower, color, position, direction, size);
         setTurnRate(PI/3);
 
+    }
+
+    //TODO for tests and rendering, doc later.
+    public Volvo240(){
+        super(4,400,Color.BLACK,new Point(100,100), new Point(1,1), size);
     }
 
     /**

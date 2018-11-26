@@ -2,18 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="535bc3e1-edbc-491f-b3e3-827c974bab51" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/View/CarController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/View/CarView.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/View/DrawPanel.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/pics/Saab95.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/pics/Scania.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/pics/Volvo240.jpg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/TDA552 - Labb 1/Model/CarModel/Volvo240.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TDA552 - Labb 1/Model/CarModel/Volvo240.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/TDA552 - Labb 1/Model/Vehicle.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/TDA552 - Labb 1/Model/Vehicle.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Model/CarModel/Volvo240.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/CarModel/Volvo240.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Model/Vehicle.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Model/Vehicle.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Test/CarTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Test/CarTest.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -149,7 +140,7 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Model/Vehicle.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="227">
+            <state relative-caret-position="-736">
               <caret line="263" lean-forward="true" selection-start-line="263" selection-end-line="263" />
               <folding>
                 <element signature="e#8513#8514#0" expanded="true" />
@@ -277,7 +268,7 @@
     <property name="Repository.Attach.Sources" value="false" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1543241186076" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1543241342492" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit5" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5" value="" />
     <property name="create.test.in.the.same.root" value="true" />
@@ -418,7 +409,7 @@
       <updated>1541693612592</updated>
       <workItem from="1541693613838" duration="5397000" />
       <workItem from="1543053653974" duration="2458000" />
-      <workItem from="1543235369759" duration="5809000" />
+      <workItem from="1543235369759" duration="5894000" />
     </task>
     <task id="LOCAL-00001" summary="completed lab2">
       <created>1542967652241</created>
@@ -434,7 +425,14 @@
       <option name="project" value="LOCAL" />
       <updated>1542967794543</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="completed lab2">
+      <created>1543241366343</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1543241366343</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -470,11 +468,10 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="13664000" />
+    <option name="totallyTimeSpent" value="13749000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info id="Designer" order="0" />
       <window_info id="UI Designer" order="1" />
@@ -488,7 +485,7 @@
       <window_info anchor="bottom" id="Event Log" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="3" />
       <window_info anchor="bottom" id="Find" order="4" weight="0.3286119" />
-      <window_info anchor="bottom" id="Run" order="5" visible="true" weight="0.32152975" />
+      <window_info anchor="bottom" id="Run" order="5" weight="0.32152975" />
       <window_info anchor="bottom" id="Database Changes" order="6" show_stripe_button="false" />
       <window_info anchor="bottom" id="Debug" order="7" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="8" weight="0.25" />
@@ -685,7 +682,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Model/Vehicle.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="227">
+        <state relative-caret-position="-736">
           <caret line="263" lean-forward="true" selection-start-line="263" selection-end-line="263" />
           <folding>
             <element signature="e#8513#8514#0" expanded="true" />

@@ -1,8 +1,13 @@
 package View;
-import Model.Car;
+import Model.CarModel.Car;
+import Model.CarModel.Saab95;
+import Model.CarModel.Scania;
 import Model.CarModel.Volvo240;
+import Model.Point;
+import Model.Vehicle;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
@@ -34,6 +39,8 @@ public class CarController {
         CarController cc = new CarController();
 
         cc.cars.add(new Volvo240());
+        cc.cars.add(new Saab95());
+        cc.cars.add(new Scania());
 
         // Start a new view and send a reference of self
         cc.frame = new CarView("CarSim 1.0", cc);
@@ -52,6 +59,10 @@ public class CarController {
                 int x = (int) Math.round(car.getPosition().getX());
                 int y = (int) Math.round(car.getPosition().getY());
                 frame.drawPanel.moveit(x, y);
+                if(checkInFrame(car)){
+                    invertDirection(car);
+                }
+
                 // repaint() calls the paintComponent method of the panel
                 frame.drawPanel.repaint();
             }
@@ -74,4 +85,15 @@ public class CarController {
             car.brake(brake);
         }
     }
+
+    private void invertDirection(Vehicle vehicle){
+        //vehicle.setPosition(new Point(vehicle.getPosition().getX(), 500));
+        vehicle.setDirection(new Point(-vehicle.getDirection().getX(),-vehicle.getDirection().getY()));
+        //vehicle.stopEngine();
+    }
+
+    private boolean checkInFrame(Vehicle vehicle){
+        return (vehicle.getPosition().getY() > 500 || vehicle.getPosition().getY() < 0);
+    }
+
 }

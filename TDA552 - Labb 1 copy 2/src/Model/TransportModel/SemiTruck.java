@@ -1,9 +1,8 @@
 package Model.TransportModel;
 
-import Model.Car;
+import Model.CarModel.Car;
 import Model.CargoBed;
 import Model.Point;
-import Model.TransportVehicle;
 
 import static java.lang.StrictMath.*;
 import java.awt.*;
@@ -21,15 +20,25 @@ public class SemiTruck extends TransportVehicle {
 
     /**
      * Constructor
-     * @param nrDoors
-     * @param enginePower
      * @param color
      * @param position
      * @param direction
      */
-    public SemiTruck(int nrDoors, double enginePower, Color color, Model.Point position, Model.Point direction) {
-        super(nrDoors, enginePower, color, position, direction, 8);
+    public SemiTruck(Color color, Model.Point position, Model.Point direction) {
+        super(2, 300, color, position, direction, 8);
         setTurnRate(PI/5);
+    }
+
+
+    /**
+     * Constructor for instancing objects with default position and direction.
+     * Calls default constructor in class, entering the static variables titled 'default' as arguments.
+     * <p>
+     * See default constructor in super.
+     *
+     */
+    public SemiTruck(){
+        this(getDefaultColor(), getDefaultCoords(), getDefaultDirection());
     }
 
     /**

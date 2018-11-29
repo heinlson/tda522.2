@@ -1,6 +1,5 @@
 package Model.CarModel;
 
-import Model.Car;
 import Model.CargoBed;
 import Model.Point;
 
@@ -21,22 +20,33 @@ import static java.lang.StrictMath.multiplyExact;
 public class Scania extends Car {
     private final CargoBed bed; //flatbed
     private int bedAngle; //Angle in degrees
+    private static final Point defaultCoords = new Point(150, 200);
 
 
     /**
      * Constructor. Initiates instance variables to values given in argument.
      * Sets angle of bed to 0, and turnRate to a set value.
-     * @param nrDoors
-     * @param enginePower
      * @param color
      * @param position
      * @param direction
      */
-    public Scania(int nrDoors, double enginePower, Color color, Model.Point position, Point direction) {
-        super(nrDoors, enginePower, color, position, direction, 6);
+    public Scania(Color color, Model.Point position, Point direction) {
+        super( 2, 350, color, position, direction, 6);
         bed = new CargoBed();
         bedAngle=0;
         setTurnRate(PI/2);
+    }
+
+
+    /**
+     * Constructor for instancing objects with default position and direction.
+     * Calls default constructor in class, entering the static variables titled 'default' as arguments.
+     * <p>
+     * See default constructor in super.
+     *
+     */
+    public Scania(){
+        this(getDefaultColor(), defaultCoords, getDefaultDirection());
     }
 
 

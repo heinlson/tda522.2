@@ -1,10 +1,9 @@
 package Model.TransportModel;
 
-import Model.Car;
+import Model.CarModel.Car;
 import Model.CargoBed;
 import Model.Movable;
 import Model.Point;
-import Model.TransportVehicle;
 
 import java.awt.*;
 import static java.lang.Math.PI;
@@ -23,14 +22,25 @@ public class CarFerry extends TransportVehicle implements Movable {
      * <p>
      * See methods stopEngine and checkDirection.
      *
-     * @param enginePower
      * @param color
      * @param position
      * @param direction
      */
-    public CarFerry(double enginePower, Color color, Model.Point position, Model.Point direction) {
-        super(1, enginePower, color, position, direction, 15);
+    public CarFerry(Color color, Model.Point position, Model.Point direction) {
+        super(1, 700, color, position, direction, 15);
         setTurnRate(PI/8);
+    }
+
+
+    /**
+     * Constructor for instancing objects with default position and direction.
+     * Calls default constructor in class, entering the static variables titled 'default' as arguments.
+     * <p>
+     * See default constructor in super.
+     *
+     */
+    public CarFerry(){
+        this(getDefaultColor(), getDefaultCoords(), getDefaultDirection());
     }
 
 

@@ -1,6 +1,8 @@
 package Model;
 
 import java.awt.*;
+import java.awt.image.BufferedImage;
+
 import static java.lang.StrictMath.*;
 
 /**
@@ -15,6 +17,7 @@ import static java.lang.StrictMath.*;
  *
  */
 public abstract class Vehicle implements Movable {
+    public BufferedImage image;
 
     //Exception message used for restricting acceleration and retardation of vehicle
     //@see gas, brake and checkArgument methods
@@ -38,6 +41,12 @@ public abstract class Vehicle implements Movable {
     //Turning
     private final Point direction = new Point(); //Vector for direction (on Unit circle)
     private double turnRate; //degree of turn rate given in radians. Unique for each vehicle model (i.e. subclasses)
+
+    //Default values
+    private static final Color defaultColor = Color.BLACK;
+    private static final Point defaultCoords = new Point(150, 100);
+    private static final Point defaultDirection = new Point(0, -1);
+
 
 
 
@@ -148,6 +157,11 @@ public abstract class Vehicle implements Movable {
     public double getTurnRate() { return turnRate; }
 
 
+    public void setDirection(Point p){
+        this.direction.setPoints(p);
+    }
+
+
     /**
      *
      * @return direction
@@ -170,7 +184,19 @@ public abstract class Vehicle implements Movable {
         position.setPoints(pos);
     }
 
-     /*
+    public static Color getDefaultColor() {
+        return defaultColor;
+    }
+
+    public static Point getDefaultCoords() {
+        return defaultCoords;
+    }
+
+    public static Point getDefaultDirection() {
+        return defaultDirection;
+    }
+
+    /*
      Methods for setting and changing speed
      */
 
@@ -264,9 +290,7 @@ public abstract class Vehicle implements Movable {
 
         position.setPoints(nextX, nextY);
 
-        if(position.getY() > 800-300 || position.getY() < 0){
-            invertDirection();
-        }
+
 
 
     }
@@ -314,11 +338,6 @@ public abstract class Vehicle implements Movable {
             direction.setPoints(unitVector);
         }
     }
-
-    private void invertDirection(){
-        direction.setPoints(-direction.getX(),-direction.getY());
-    }
-
 
 
     /**

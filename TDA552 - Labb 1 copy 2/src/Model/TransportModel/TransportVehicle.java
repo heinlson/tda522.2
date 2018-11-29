@@ -1,6 +1,12 @@
-package Model;
+package Model.TransportModel;
+
+import Model.CarModel.Car;
+import Model.CargoBed;
+import Model.Point;
+import Model.Vehicle;
 
 import java.awt.*;
+import java.awt.image.BufferedImage;
 
 public abstract class TransportVehicle extends Vehicle {
     private boolean rampIsExtended;
@@ -24,7 +30,7 @@ public abstract class TransportVehicle extends Vehicle {
      * @param direction
      * @param size
      */
-    public TransportVehicle(int nrDoors, double enginePower, Color color, Point position, Point direction, int size) {
+    public TransportVehicle(int nrDoors, double enginePower, Color color, Model.Point position, Point direction, int size) {
         super(enginePower, color, position, direction, size);
         this.nrDoors = nrDoors;
         cargoSpace = new CargoBed();

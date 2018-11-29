@@ -1,10 +1,14 @@
 package Model.CarModel;
 
-import Model.Car;
 import Model.Point;
+import View.DrawPanel;
+
+import javax.imageio.ImageIO;
 
 import static java.lang.StrictMath.*;
 import java.awt.*;
+import java.awt.image.BufferedImage;
+import java.io.File;
 
 /**
  * Class extending Vehicle, simulating a vehicle model.
@@ -16,7 +20,11 @@ import java.awt.*;
  */
 public class Saab95 extends Car {
 
+
     private boolean turboOn; //if true, increases degree of acceleration/retardation.
+    private static final Model.Point defaultCoords = new Point(150, 100);
+
+
 
     /**
      * Default constructor initializing all instance variables.
@@ -26,33 +34,26 @@ public class Saab95 extends Car {
      * All other instance variables are initialized through constructor arguments.
      * <p>
      * See default constructor in super.
-     *
-     * @param nrDoors
-     * @param enginePower
      * @param color
      * @param position
      * @param direction
      */
-    public Saab95(int nrDoors, double enginePower, Color color, Model.Point position, Model.Point direction) {
-        super(nrDoors, enginePower, color, position, direction, 3);
+    public Saab95(Color color, Model.Point position, Model.Point direction) {
+        super(4, 400, color, position, direction, 3);
         turboOn = false;
         setTurnRate(PI/2);
     }
 
 
     /**
-     * Constructor for instancing objects with default position and direction
-     * (currently set to coordinate (100,100), and direction up.
-     * Calls default constructor in class, entering the parameter variables as arguments.
+     * Constructor for instancing objects with default position and direction.
+     * Calls default constructor in class, entering the static variables titled 'default' as arguments.
      * <p>
      * See default constructor in super.
      *
-     * @param nrDoors
-     * @param enginePower
-     * @param color
      */
-    public Saab95(int nrDoors, double enginePower, Color color) {
-        this(nrDoors, enginePower, color, new Model.Point(100,100), new Point(0,-1));
+    public Saab95() {
+        this(getDefaultColor(), defaultCoords, getDefaultDirection());
     }
 
 

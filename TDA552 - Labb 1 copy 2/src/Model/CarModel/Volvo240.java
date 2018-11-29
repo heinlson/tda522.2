@@ -1,6 +1,5 @@
 package Model.CarModel;
 
-import Model.Car;
 import Model.Point;
 
 import java.awt.*;
@@ -17,7 +16,7 @@ import static java.lang.StrictMath.*;
  */
 public class Volvo240 extends Car {
     private final static double trimFactor = 1.25; //used in determining degree of acceleration/retardation
-    private static final int size = 3;
+    private static final Model.Point defaultCoords = new Point(150, 300);
 
     /**
      * Default constructor initializing all instance variables except trimFactor, which is already initialized.
@@ -26,37 +25,25 @@ public class Volvo240 extends Car {
      * All other instance variables are initialized through constructor arguments.
      * <p>
      * See default constructor in super.
-     *
-     * @param nrDoors
-     * @param enginePower
      * @param color
      * @param position
      * @param direction
      */
-    public Volvo240(int nrDoors, double enginePower, Color color, Model.Point position, Model.Point direction) {
-        super(nrDoors, enginePower, color, position, direction, size);
+    public Volvo240(Color color, Model.Point position, Model.Point direction) {
+        super(4, 500, color, position, direction, 3);
         setTurnRate(PI/3);
-
     }
 
-    //TODO for tests and rendering, doc later.
-    public Volvo240(){
-        super(4,400,Color.BLACK,new Point(100,100), new Point(1,1), size);
-    }
 
     /**
-     * Constructor for instancing objects with default position and direction
-     * (currently set to coordinate (100,100), and direction up.
-     * Calls default constructor in class, entering the parameter variables as arguments.
+     * Constructor for instancing objects with default position and direction.
+     * Calls default constructor in class, entering the static variables titled 'default' as arguments.
      * <p>
      * See default constructor in super.
      *
-     * @param nrDoors
-     * @param enginePower
-     * @param color
      */
-    public Volvo240(int nrDoors, double enginePower, Color color) {
-        this(nrDoors, enginePower, color, new Model.Point(100,100), new Point(0,-1));
+    public Volvo240(){
+        this(getDefaultColor(), defaultCoords, getDefaultDirection());
     }
 
     /**

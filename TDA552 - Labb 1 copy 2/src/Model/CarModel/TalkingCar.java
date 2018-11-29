@@ -1,6 +1,5 @@
 package Model.CarModel;
 
-import Model.Car;
 import Model.Point;
 
 import java.awt.*;

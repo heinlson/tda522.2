@@ -1,12 +1,10 @@
 package Model.TransportModel;
 
 import Model.CarModel.Car;
-import Model.CargoBed;
 import Model.Point;
 import Model.Vehicle;
 
 import java.awt.*;
-import java.awt.image.BufferedImage;
 
 public abstract class TransportVehicle extends Vehicle {
     private boolean rampIsExtended;

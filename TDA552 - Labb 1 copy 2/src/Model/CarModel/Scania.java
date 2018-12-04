@@ -1,6 +1,6 @@
 package Model.CarModel;
 
-import Model.CargoBed;
+import Model.TransportModel.CargoBed;
 import Model.Point;
 
 import java.awt.*;
@@ -18,9 +18,10 @@ import static java.lang.StrictMath.multiplyExact;
  * See class Car.
  */
 public class Scania extends Car {
+
+    //For cargo
     private final CargoBed bed; //flatbed
     private int bedAngle; //Angle in degrees
-    private static final Point defaultCoords = new Point(150, 200);
 
 
     /**
@@ -46,7 +47,7 @@ public class Scania extends Car {
      *
      */
     public Scania(){
-        this(getDefaultColor(), defaultCoords, getDefaultDirection());
+        this(getDefaultColor(), getDefaultCoords(), getDefaultDirection());
     }
 
 
@@ -65,7 +66,7 @@ public class Scania extends Car {
      */
     public void setBedAngle(int d){
         if(getCurrentSpeed() == 0){
-            bedAngle=d;
+            bedAngle += d;
             checkAngle();
         }else{
             //do nothing

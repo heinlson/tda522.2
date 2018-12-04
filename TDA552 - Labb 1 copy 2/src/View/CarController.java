@@ -1,16 +1,13 @@
 package View;
-import Model.CarModel.Car;
-import Model.CarModel.Saab95;
-import Model.CarModel.Scania;
-import Model.CarModel.Volvo240;
+import Model.CarModel.*;
 import Model.Point;
-import Model.Vehicle;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import java.util.List;
 
 /*
  * This class represents the Controller part in the MVC pattern.
@@ -30,7 +27,7 @@ public class CarController {
     // The frame that represents this instance View of the MVC pattern
     CarView frame;
     // A list of cars, modify if needed
-    ArrayList<Car> cars = new ArrayList<>();
+    List<Car> cars = new ArrayList<>();
 
     //methods:
 
@@ -38,9 +35,11 @@ public class CarController {
         // Instance of this class
         CarController cc = new CarController();
 
-        cc.cars.add(new Volvo240());
-        cc.cars.add(new Saab95());
-        cc.cars.add(new Scania());
+        cc.cars.add(new Volvo240(Color.BLACK, new Point(150, 100), new Point(-1, 3.14/5)));
+        cc.cars.add(new Saab95(Color.BLACK, new Point(150, 200), new Point(-1, -1)));
+        cc.cars.add(new Scania(Color.BLACK, new Point(150, 300), new Point(1, 0)));
+        cc.cars.add(new Volvo240(Color.BLACK, new Point(150, 400), new Point(1, 0)));
+        cc.cars.add(new TalkingCar(Color.BLACK, new Point(50, 100), new Point(1, 0)));
 
         // Start a new view and send a reference of self
         cc.frame = new CarView("CarSim 1.0", cc);
@@ -56,18 +55,17 @@ public class CarController {
         public void actionPerformed(ActionEvent e) {
             for (Car car : cars) {
                 car.move();
-                int x = (int) Math.round(car.getPosition().getX());
-                int y = (int) Math.round(car.getPosition().getY());
-                frame.drawPanel.moveit(x, y);
-                if(checkInFrame(car)){
-                    invertDirection(car);
-                }
-
-                // repaint() calls the paintComponent method of the panel
+                frame.drawPanel.moveit(car);
                 frame.drawPanel.repaint();
             }
         }
     }
+
+
+
+
+    //--------------Methods for user input-------------------------
+
 
     // Calls the gas method for each car once
     void gas(int amount) {
@@ -78,6 +76,7 @@ public class CarController {
 
     }
 
+
     void brake(int amount) {
         double brake = ((double) amount) / 100;
         for (Car car : cars
@@ -86,14 +85,50 @@ public class CarController {
         }
     }
 
-    private void invertDirection(Vehicle vehicle){
-        //vehicle.setPosition(new Point(vehicle.getPosition().getX(), 500));
-        vehicle.setDirection(new Point(-vehicle.getDirection().getX(),-vehicle.getDirection().getY()));
-        //vehicle.stopEngine();
+
+    void setTurboOn(){
+        for (Car car : cars){
+            if(car instanceof Saab95){
+                ((Saab95) car).setTurboOn();
+            }
+        }
     }
 
-    private boolean checkInFrame(Vehicle vehicle){
-        return (vehicle.getPosition().getY() > 500 || vehicle.getPosition().getY() < 0);
+    void setTurboOff(){
+        for (Car car : cars){
+            if(car instanceof Saab95){
+                ((Saab95) car).setTurboOff();
+            }
+        }
     }
+
+    void setBedAngle(int amount){
+        for (Car car : cars){
+            if(car instanceof Scania){
+                ((Scania) car).setBedAngle(amount);
+            }
+        }
+    }
+
+    void speak(){
+        for (Car car : cars){
+            if(car instanceof TalkingCar){
+                ((TalkingCar) car).speak();
+            }
+        }
+    }
+
+    void startAllCars(){
+        for (Car car : cars){
+            car.startEngine();
+        }
+    }
+
+    void stopAllCars(){
+        for (Car car : cars){
+            car.stopEngine();
+        }
+    }
+
 
 }

@@ -1,14 +1,9 @@
 package Model.CarModel;
 
 import Model.Point;
-import View.DrawPanel;
-
-import javax.imageio.ImageIO;
 
 import static java.lang.StrictMath.*;
 import java.awt.*;
-import java.awt.image.BufferedImage;
-import java.io.File;
 
 /**
  * Class extending Vehicle, simulating a vehicle model.
@@ -20,10 +15,7 @@ import java.io.File;
  */
 public class Saab95 extends Car {
 
-
     private boolean turboOn; //if true, increases degree of acceleration/retardation.
-    private static final Model.Point defaultCoords = new Point(150, 100);
-
 
 
     /**
@@ -53,7 +45,7 @@ public class Saab95 extends Car {
      *
      */
     public Saab95() {
-        this(getDefaultColor(), defaultCoords, getDefaultDirection());
+        this(getDefaultColor(), getDefaultCoords(), getDefaultDirection());
     }
 
 

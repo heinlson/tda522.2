@@ -1,8 +1,9 @@
 package Model;
 
-import java.awt.*;
-import java.awt.image.BufferedImage;
+import View.CarView;
+import View.DrawPanel;
 
+import java.awt.*;
 import static java.lang.StrictMath.*;
 
 /**
@@ -17,11 +18,10 @@ import static java.lang.StrictMath.*;
  *
  */
 public abstract class Vehicle implements Movable {
-    public BufferedImage image;
 
     //Exception message used for restricting acceleration and retardation of vehicle
     //@see gas, brake and checkArgument methods
-    final static String INVALID_ARG = "Invalid argument in gas or break method. Try values [0, 1]";
+    private final static String INVALID_ARG = "Invalid argument in gas or break method. Try values [0, 1]";
 
     //Appearance
     private Color color; // Color of the vehicle
@@ -46,8 +46,6 @@ public abstract class Vehicle implements Movable {
     private static final Color defaultColor = Color.BLACK;
     private static final Point defaultCoords = new Point(150, 100);
     private static final Point defaultDirection = new Point(0, -1);
-
-
 
 
    /*
@@ -157,11 +155,6 @@ public abstract class Vehicle implements Movable {
     public double getTurnRate() { return turnRate; }
 
 
-    public void setDirection(Point p){
-        this.direction.setPoints(p);
-    }
-
-
     /**
      *
      * @return direction
@@ -184,19 +177,7 @@ public abstract class Vehicle implements Movable {
         position.setPoints(pos);
     }
 
-    public static Color getDefaultColor() {
-        return defaultColor;
-    }
-
-    public static Point getDefaultCoords() {
-        return defaultCoords;
-    }
-
-    public static Point getDefaultDirection() {
-        return defaultDirection;
-    }
-
-    /*
+     /*
      Methods for setting and changing speed
      */
 
@@ -290,6 +271,10 @@ public abstract class Vehicle implements Movable {
 
         position.setPoints(nextX, nextY);
 
+        if(!isInFrame()){
+            invertDirection();
+            setPosition(correctPosition());
+        }
 
 
 
@@ -339,6 +324,43 @@ public abstract class Vehicle implements Movable {
         }
     }
 
+    /**
+     * Inverts the current direction
+     */
+    private void invertDirection(){
+        direction.setPoints(-direction.getX(),-direction.getY());
+        //stopEngine();
+    }
+
+    private Point correctPosition(){
+        boolean isRightOfFrame = position.getX()> CarView.getFrameWidth()-117;
+        boolean isLeftOfFrame = position.getX()<0;
+        boolean isBelowFrame = position.getY()> CarView.getFrameHeight() - 300;
+        boolean isAboveFrame = position.getY()<0;
+
+        if(isRightOfFrame){
+            return new Point(CarView.getFrameWidth()-117,getPosition().getY());
+        } else if(isLeftOfFrame){
+            return new Point(0,getPosition().getY());
+        }else if(isAboveFrame) {
+            return new Point(getPosition().getX(), 0);
+        } else if(isBelowFrame) {
+            return new Point(getPosition().getX(), CarView.getFrameHeight()-300);
+        } else{
+            throw new IllegalStateException("hur lyckas du?");
+        }
+    }
+
+
+    private boolean isInFrame(){
+        boolean isRightOfFrame = position.getX()> CarView.getFrameWidth()-117;
+        boolean isLeftOfFrame = position.getX()<0;
+        boolean isBelowFrame = position.getY()> CarView.getFrameHeight() - 300;
+        boolean isAboveFrame = position.getY()<0;
+
+        return  (!(isAboveFrame||isBelowFrame||isLeftOfFrame||isRightOfFrame));
+    }
+
 
     /**
      * Method for throwing exception if double value in argument is outside of interval [0, 1]
@@ -352,7 +374,27 @@ public abstract class Vehicle implements Movable {
     }
 
 
+    /**
+     *
+     * @return default color
+     */
+    public static Color getDefaultColor() {
+        return defaultColor;
+    }
 
+    /**
+     *
+     * @return default position
+     */
+    public static Point getDefaultCoords() {
+        return defaultCoords;
+    }
 
-
+    /**
+     *
+     * @return default direction
+     */
+    public static Point getDefaultDirection() {
+        return defaultDirection;
+    }
 }

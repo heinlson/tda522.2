@@ -4,6 +4,8 @@ import Model.Point;
 
 import java.awt.*;
 
+import static java.lang.StrictMath.PI;
+
 /**
  * Class extending Vehicle, simulating a vehicle model capable of speech.
  * <p>
@@ -13,16 +15,35 @@ import java.awt.*;
  * See class Vehicle.
  */
 public class TalkingCar extends Car {
+
     private final static String MSG = "brum brum!"; //A fully formed sentence
 
+
     /**
-     * Fel konstruktor, fixa?
-     * @param nrDoors
-     * @param enginePower
+     * Default constructor initializing all instance variables.
+     * <p>
+     * Constructor sets currentSpeed to 0 by calling stopEngine method in super.
+     * <p>
+     * See default constructor in super.
      * @param color
+     * @param position
+     * @param direction
      */
-    public TalkingCar(int nrDoors, double enginePower, Color color) {
-        super(nrDoors, enginePower, color, new Model.Point(1,1), new Point(1,1), 2);
+    public TalkingCar(Color color, Model.Point position, Model.Point direction) {
+        super(2, 200, color, position, direction, 3);
+        setTurnRate(PI/9);
+    }
+
+
+    /**
+     * Constructor for instancing objects with default position and direction.
+     * Calls default constructor in class, entering the static variables titled 'default' as arguments.
+     * <p>
+     * See default constructor in super.
+     *
+     */
+    public TalkingCar() {
+        this(getDefaultColor(), getDefaultCoords(), getDefaultDirection());
     }
 
     /**
@@ -39,7 +60,7 @@ public class TalkingCar extends Car {
     /**
      * Prints MSG
      */
-    public void talk(){
+    public void speak(){
         System.out.println(MSG);
     }
 

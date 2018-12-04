@@ -15,9 +15,11 @@ import static java.lang.StrictMath.*;
  * See class Vehicle.
  */
 public class Volvo240 extends Car {
-    private final static double trimFactor = 1.25; //used in determining degree of acceleration/retardation
-    private static final Model.Point defaultCoords = new Point(150, 300);
 
+    private final static double trimFactor = 1.25; //used in determining degree of acceleration/retardation
+
+
+    //TODO fix javadoc för konstruktor?
     /**
      * Default constructor initializing all instance variables except trimFactor, which is already initialized.
      * <p>
@@ -43,8 +45,9 @@ public class Volvo240 extends Car {
      *
      */
     public Volvo240(){
-        this(getDefaultColor(), defaultCoords, getDefaultDirection());
+        this(getDefaultColor(), getDefaultCoords(), getDefaultDirection());
     }
+
 
     /**
      * See speedFactor method in class Vehicle.

@@ -3,24 +3,26 @@ package Test;
 import Model.CarModel.Car;
 import Model.CarModel.Saab95;
 import Model.CarModel.Volvo240;
+import Model.TransportModel.CargoBed;
 import Model.Point;
 import Model.TransportModel.CarFerry;
 import Model.TransportModel.SemiTruck;
+import Model.Vehicle;
+import View.DrawPanel;
 import org.junit.jupiter.api.Test;
 
 import java.awt.*;
+import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class CarTest {
-    Point p = new Point(1,1);
-    Car car = new Volvo240(Color.BLACK, p, p);
-    Car car2 = new Saab95(Color.BLACK, p, p);
-    SemiTruck semitruck = new SemiTruck(Color.BLACK, p, p);
+/*
+    Car car = new Volvo240(4, 100, Color.BLACK);
+    Car car2 = new Saab95(4, 100, Color.RED);
 
 
 
-    /*
     @Test
     void getNrDoors() {
         assertEquals(vehicle.getNrDoors(), 4);
@@ -151,12 +153,15 @@ class CarTest {
     void Constructor(){
         Vehicle c = new Saab95(4, 100, Color.BLUE);
 
-    }*/
+    }
 
 
 
 
     //Labb 2
+    Point p = new Point(1,1);
+    SemiTruck semitruck = new SemiTruck(2, 100, Color.BLUE, p, p);
+
     String msg = "Is car loaded after set to loadable? ";
     String msg2 = "expected: true, actual: ";
     String msg3 = "Is vehicle loadable? expected: false, actual: ";
@@ -241,7 +246,7 @@ class CarTest {
     }
 
     //CarFerry
-    CarFerry ferry = new CarFerry(Color.BLACK, p, p);
+    CarFerry ferry = new CarFerry(100, Color.BLUE, p, p);
 
     @Test
     void unloadCargoFerry(){
@@ -266,6 +271,36 @@ class CarTest {
         assertEquals(ferry.getCargoSpace().get(0), car);
     }
 
+
+
+
+    private DrawPanel drawPanel = new DrawPanel(800,800);
+
+    @Test
+    public void testDrawPanel(){
+        drawPanel.cars.add(new Volvo240());
+        Car testCar = drawPanel.cars.get(0);
+
+        drawPanel.mapCarToPosition(testCar);
+        int xPosition = (int)drawPanel.carPosition.get(testCar).getX();
+        int yPosition = (int)drawPanel.carPosition.get(testCar).getY();
+
+        assertEquals(150, xPosition);
+        assertEquals(100, yPosition);
+
+
+        testCar.setPosition(new Point(200, 300));
+
+        //drawPanel.mapCarToPosition(testCar);
+
+        int xPosition2 = (int)drawPanel.carPosition.get(testCar).getX();
+        int yPosition2 = (int)drawPanel.carPosition.get(testCar).getY();
+
+        assertEquals(200, xPosition2);
+        assertEquals(300, yPosition2);
+
+    }
+*/
 
 
 }

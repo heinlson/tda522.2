@@ -4,7 +4,6 @@ import Model.Point;
 import Model.Vehicle;
 
 import java.awt.*;
-import java.awt.image.BufferedImage;
 
 public abstract class Car extends Vehicle {
     private final int nrDoors; // Number of doors on the vehicle
@@ -15,12 +14,12 @@ public abstract class Car extends Vehicle {
     }
 
 
-    /*
-    public Car(int nrDoors, double enginePower, Color color) {
+
+    /*public Car(int nrDoors, double enginePower, Color color) {
         super(enginePower, color);
         this.nrDoors = nrDoors;
-    }
-     */
+    }*/
+
 
     /**
      *

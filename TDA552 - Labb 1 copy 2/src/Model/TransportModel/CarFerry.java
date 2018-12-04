@@ -1,7 +1,6 @@
 package Model.TransportModel;
 
 import Model.CarModel.Car;
-import Model.CargoBed;
 import Model.Movable;
 import Model.Point;
 
@@ -9,6 +8,8 @@ import java.awt.*;
 import static java.lang.Math.PI;
 
 public class CarFerry extends TransportVehicle implements Movable {
+
+    //For cargo
     private final CargoBed cargoSpace = getCargoSpace();
 
     /**
@@ -42,7 +43,6 @@ public class CarFerry extends TransportVehicle implements Movable {
     public CarFerry(){
         this(getDefaultColor(), getDefaultCoords(), getDefaultDirection());
     }
-
 
     /**
      * Removes car from first index in cargo space.

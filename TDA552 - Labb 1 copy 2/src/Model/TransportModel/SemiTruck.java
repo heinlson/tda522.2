@@ -1,7 +1,6 @@
 package Model.TransportModel;
 
 import Model.CarModel.Car;
-import Model.CargoBed;
 import Model.Point;
 
 import static java.lang.StrictMath.*;
@@ -16,7 +15,10 @@ import java.awt.*;
  * See class Car.
  */
 public class SemiTruck extends TransportVehicle {
+
+    //For cargo
     private CargoBed trailer = getCargoSpace();
+
 
     /**
      * Constructor
@@ -40,6 +42,8 @@ public class SemiTruck extends TransportVehicle {
     public SemiTruck(){
         this(getDefaultColor(), getDefaultCoords(), getDefaultDirection());
     }
+
+
 
     /**
      * See speedFactor method in super (class Vehicle).

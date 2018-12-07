@@ -31,7 +31,7 @@ public class Scania extends Car {
      * @param position
      * @param direction
      */
-    public Scania(Color color, Model.Point position, Point direction) {
+    public Scania(Color color, Point position, Point direction) {
         super( 2, 350, color, position, direction, 6);
         bed = new CargoBed();
         bedAngle=0;

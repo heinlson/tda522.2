@@ -339,7 +339,7 @@ public abstract class Vehicle implements Movable {
         boolean isAboveFrame = position.getY()<0;
 
         if(isRightOfFrame){
-            return new Point(CarView.getFrameWidth()-117,getPosition().getY());
+            return new Point(CarView.getFrameWidth()-117, getPosition().getY());
         } else if(isLeftOfFrame){
             return new Point(0,getPosition().getY());
         }else if(isAboveFrame) {

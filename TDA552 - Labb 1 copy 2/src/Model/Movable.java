@@ -5,7 +5,6 @@ package Model;
  */
 public interface Movable {
 
-    //TODO clarify "move".
     /**
      * Method for updating position (based on attributes of instance).
      */
